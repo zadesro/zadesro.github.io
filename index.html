@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoStream TV - Televiziunea Ta Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0a0e27;
+            --secondary-dark: #1a1f3a;
+            --accent-blue: #00d9ff;
+            --accent-purple: #7c3aed;
+            --accent-gradient: linear-gradient(135deg, #00d9ff 0%, #7c3aed 100%);
+            --text-light: #ffffff;
+            --text-gray: #a0aec0;
+            --card-bg: rgba(26, 31, 58, 0.6);
+            --border-subtle: rgba(0, 217, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 217, 255, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: bgPulse 15s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-subtle);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.3)); }
+            50% { filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.5)); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--text-light);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--accent-blue);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: 
+                radial-gradient(circle at center, transparent 20%, var(--primary-dark) 70%),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 217, 255, 0.03) 2px, rgba(0, 217, 255, 0.03) 4px);
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleEntry 1s ease-out;
+        }
+
+        @keyframes titleEntry {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            animation: titleEntry 1s ease-out 0.2s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: titleEntry 1s ease-out 0.4s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: var(--text-light);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--accent-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 3rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 20px 40px rgba(0, 217, 255, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Packages Section */
+        .packages {
+            padding: 6rem 2rem;
+            background: var(--secondary-dark);
+            position: relative;
+        }
+
+        .packages::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--accent-gradient);
+        }
+
+        .packages-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .package-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--border-subtle);
+            border-radius: 25px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card.featured {
+            border-color: var(--accent-blue);
+            transform: scale(1.05);
+        }
+
+        .package-card.featured::before {
+            content: 'POPULAR';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--accent-gradient);
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .package-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--accent-blue);
+            box-shadow: 0 25px 50px rgba(0, 217, 255, 0.25);
+        }
+
+        .package-name {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-blue);
+        }
+
+        .package-price {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 1.5rem 0;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .package-price span {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+        }
+
+        .package-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .package-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-gray);
+        }
+
+        .package-features li::before {
+            content: '✓ ';
+            color: var(--accent-blue);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            margin-top: 4rem;
+        }
+
+        .contact-info {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 2.5rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--accent-blue);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-gray);
+        }
+
+        .contact-item-icon {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 6rem 2rem;
+            background: var(--secondary-dark);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--accent-blue);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 2rem;
+            color: var(--accent-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-gray);
+            padding: 0 2rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 2rem 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            border-top: 1px solid var(--border-subtle);
+            padding: 3rem 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .copyright {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                background: rgba(10, 14, 39, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                transition: left 0.3s ease;
+                border-bottom: 1px solid var(--border-subtle);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(8px, -8px);
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .package-card.featured {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                padding: 6rem 1rem 2rem;
+            }
+
+            .btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+
+            .features,
+            .packages,
+            .contact,
+            .faq {
+                padding: 4rem 1rem;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        body {
+            animation: fadeIn 0.5s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">RoStream TV</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Acasă</a></li>
+                <li><a href="#packages" class="nav-link">Pachete</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page-section active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Televiziunea Ta Premium</h1>
+                <p>Peste 500+ canale HD/4K. Acces nelimitat. Oriunde în lume. Oricând dorești.</p>
+                <div class="cta-buttons">
+                    <a href="#packages" class="btn btn-primary nav-link">Vezi Pachetele</a>
+                    <a href="#contact" class="btn btn-secondary nav-link">Testează Gratuit</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <h2 class="section-title">De ce RoStream TV?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">📺</span>
+                    <h3>500+ Canale</h3>
+                    <p>Acces la cele mai populare canale românești și internaționale în calitate HD și 4K.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Streaming Rapid</h3>
+                    <p>Tehnologie de ultimă generație pentru streaming fără întreruperi și buffer redus.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📱</span>
+                    <h3>Multi-Dispozitiv</h3>
+                    <p>Vizionează pe TV, telefon, tabletă, laptop - orice dispozitiv, oricând.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🔄</span>
+                    <h3>Arhivă 7 Zile</h3>
+                    <p>Nu ai ratat nimic! Vizionează orice program din ultimele 7 zile.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🌍</span>
+                    <h3>Acces Global</h3>
+                    <p>Urmărește canalele tale preferate din orice colț al lumii.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🛡️</span>
+                    <h3>Suport 24/7</h3>
+                    <p>Echipa noastră este mereu disponibilă să te ajute, non-stop.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Packages Page -->
+    <div id="packages" class="page-section">
+        <section class="packages">
+            <div class="packages-container">
+                <h2 class="section-title">Alege Pachetul Tău</h2>
+                <div class="packages-grid">
+                    <div class="package-card">
+                        <h3 class="package-name">BASIC</h3>
+                        <div class="package-price">€9.99<span>/lună</span></div>
+                        <ul class="package-features">
+                            <li>200+ canale HD</li>
+                            <li>Arhivă 3 zile</li>
+                            <li>1 dispozitiv simultan</li>
+                            <li>Suport standard</li>
+                            <li>Aplicații mobile</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-secondary nav-link">Comandă Acum</a>
+                    </div>
+
+                    <div class="package-card featured">
+                        <h3 class="package-name">STANDARD</h3>
+                        <div class="package-price">€14.99<span>/lună</span></div>
+                        <ul class="package-features">
+                            <li>400+ canale HD/4K</li>
+                            <li>Arhivă 7 zile</li>
+                            <li>2 dispozitive simultane</li>
+                            <li>Suport prioritar</li>
+                            <li>Aplicații mobile & TV</li>
+                            <li>Canale premium incluse</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary nav-link">Comandă Acum</a>
+                    </div>
+
+                    <div class="package-card">
+                        <h3 class="package-name">PREMIUM</h3>
+                        <div class="package-price">€19.99<span>/lună</span></div>
+                        <ul class="package-features">
+                            <li>500+ canale HD/4K/8K</li>
+                            <li>Arhivă 14 zile</li>
+                            <li>4 dispozitive simultane</li>
+                            <li>Suport VIP 24/7</li>
+                            <li>Toate aplicațiile</li>
+                            <li>Toate canalele premium</li>
+                            <li>Canale sportive exclusive</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-secondary nav-link">Comandă Acum</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page-section">
+        <section class="contact">
+            <h2 class="section-title">Contactează-ne</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Informații Contact</h3>
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📧</span>
+                        <div>
+                            <strong>Email</strong><br>
+                            contact@rostream.tv
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📞</span>
+                        <div>
+                            <strong>Telefon</strong><br>
+                            +40 123 456 789
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-item-icon">💬</span>
+                        <div>
+                            <strong>Program</strong><br>
+                            Luni - Duminică: 24/7
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📍</span>
+                        <div>
+                            <strong>Adresă</strong><br>
+                            Str. Exemplu Nr. 123, București, România
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FAQ Page -->
+    <div id="faq" class="page-section">
+        <section class="faq">
+            <h2 class="section-title">Întrebări Frecvente</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Ce este IPTV?</div>
+                <div class="faq-answer">
+                    IPTV (Internet Protocol Television) este o modalitate modernă de a viziona televiziunea prin intermediul internetului. Spre deosebire de televiziunea tradițională prin cablu sau satelit, IPTV folosește conexiunea ta la internet pentru a-ți transmite canalele preferate în calitate HD și 4K.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">De ce echipament am nevoie?</div>
+                <div class="faq-answer">
+                    Ai nevoie doar de o conexiune stabilă la internet (minim 10 Mbps) și un dispozitiv compatibil: Smart TV, telefon, tabletă, laptop sau un set-top box Android. Oferim aplicații pentru toate platformele populare.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Pot testa serviciul înainte de a cumpăra?</div>
+                <div class="faq-answer">
+                    Da! Oferim o perioadă de testare gratuită de 24-48 ore pentru ca tu să testezi calitatea streamingului și să vezi dacă serviciul nostru îți place. Contactează-ne pentru a primi acces de test.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Pe câte dispozitive pot viziona simultan?</div>
+                <div class="faq-answer">
+                    Depinde de pachetul ales: Pachetul Basic permite 1 dispozitiv, Standard permite 2 dispozitive, iar Premium permite până la 4 dispozitive simultan. Poți comuta între dispozitive oricând.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Cum se face instalarea?</div>
+                <div class="faq-answer">
+                    Instalarea este foarte simplă! După achiziționarea pachetului, vei primi un email cu link-uri de descărcare și instrucțiuni pas cu pas. De asemenea, echipa noastră de suport este disponibilă 24/7 pentru a te ajuta cu instalarea.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Ce metode de plată acceptați?</div>
+                <div class="faq-answer">
+                    Acceptăm plăți prin card bancar (Visa, Mastercard), PayPal, transfer bancar și criptomonede. Toate plățile sunt securizate și procesate în siguranță.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Funcționează și în afara României?</div>
+                <div class="faq-answer">
+                    Absolut! Serviciul nostru funcționează în orice parte a lumii, atât timp cât ai o conexiune stabilă la internet. Este perfect pentru românii din diaspora care vor să urmărească canale românești.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Ce se întâmplă dacă am probleme tehnice?</div>
+                <div class="faq-answer">
+                    Echipa noastră de suport tehnic este disponibilă 24/7 prin email, telefon sau chat live. De obicei, rezolvăm majoritatea problemelor în câteva minute. Pentru clienții Premium, oferim și suport prin acces la distanță.
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo">RoStream TV</div>
+            <div class="footer-links">
+                <a href="#home" class="nav-link">Acasă</a>
+                <a href="#packages" class="nav-link">Pachete</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </div>
+            <div class="copyright">
+                © 2025 RoStream TV. Toate drepturile rezervate.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pageSections = document.querySelectorAll('.page-section');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinksContainer = document.querySelector('.nav-links');
+
+        // Mobile menu toggle
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinksContainer.classList.toggle('active');
+        });
+
+        // Page navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                
+                // Update active states
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                
+                // Show target page
+                pageSections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === targetId) {
+                        section.classList.add('active');
+                    }
+                });
+
+                // Close mobile menu
+                menuToggle.classList.remove('active');
+                navLinksContainer.classList.remove('active');
+
+                // Smooth scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // FAQ accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all items
+                faqItems.forEach(i => i.classList.remove('active'));
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && !this.classList.contains('nav-link')) {
+                    e.preventDefault();
+                }
+            });
+        });
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add animation on scroll for feature cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .package-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
