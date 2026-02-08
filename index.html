@@ -80,57 +80,13 @@
 
         .logo {
             font-family: 'Bebas Neue', cursive;
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            letter-spacing: 1px;
-        }
-
-        .logo-text {
+            font-size: 2rem;
             background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: 2px;
             animation: logoGlow 3s ease-in-out infinite;
-        }
-
-        .logo-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: var(--accent-gradient);
-            border-radius: 12px;
-            position: relative;
-            animation: logoGlow 3s ease-in-out infinite;
-        }
-
-        .logo-icon::before {
-            content: '📺';
-            font-size: 1.5rem;
-            position: absolute;
-            animation: tvPulse 2s ease-in-out infinite;
-        }
-
-        .logo-icon::after {
-            content: '🍬';
-            font-size: 1rem;
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            animation: candyBounce 2s ease-in-out infinite;
-        }
-
-        @keyframes tvPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        @keyframes candyBounce {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-3px) rotate(15deg); }
         }
 
         @keyframes logoGlow {
@@ -707,20 +663,7 @@
             }
 
             .logo {
-                font-size: 1.4rem;
-            }
-
-            .logo-icon {
-                width: 35px;
-                height: 35px;
-            }
-
-            .logo-icon::before {
-                font-size: 1.2rem;
-            }
-
-            .logo-icon::after {
-                font-size: 0.8rem;
+                font-size: 1.5rem;
             }
 
             .hero {
@@ -755,10 +698,7 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">
-                <span class="logo-icon"></span>
-                <span class="logo-text">OroTV-DulceTv</span>
-            </div>
+            <div class="logo">OroTV-DulceTv</div>
             <ul class="nav-links">
                 <li><a href="#home" class="nav-link active">Acasă</a></li>
                 <li><a href="#packages" class="nav-link">Pachete</a></li>
@@ -888,7 +828,7 @@
                         <span class="contact-item-icon">📧</span>
                         <div>
                             <strong>Email</strong><br>
-                            contact@orotv-dulcetv.ro
+                            contact@placeholder.ro
                         </div>
                     </div>
                     <div class="contact-item">
@@ -983,10 +923,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="logo">
-                <span class="logo-icon"></span>
-                <span class="logo-text">OroTV-DulceTv</span>
-            </div>
+            <div class="logo">OroTV-DulceTv</div>
             <div class="footer-links">
                 <a href="#home" class="nav-link">Acasă</a>
                 <a href="#packages" class="nav-link">Pachete</a>
@@ -999,7 +936,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Navigation functionality
         const navLinks = document.querySelectorAll('.nav-link');
         const pageSections = document.querySelectorAll('.page-section');
@@ -1086,10 +1023,4 @@
                 if (entry.isIntersecting) {
                     setTimeout(() => {
                         entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.feature-card, .package-card').forEach(car
+               
