@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OroTV-DulceTv - Televiziunea Ta Premium</title>
+    <title>MiauTv-OroTv-DulceTv - Televiziunea Ta Premium</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -75,18 +75,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 2rem;
+            padding: 1rem 1.5rem;
         }
 
         .logo {
             font-family: 'Bebas Neue', cursive;
-            font-size: 2rem;
+            font-size: 1.4rem;
             background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             animation: logoGlow 3s ease-in-out infinite;
+            white-space: nowrap;
         }
 
         @keyframes logoGlow {
@@ -96,7 +97,7 @@
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 1.5rem;
             list-style: none;
         }
 
@@ -663,7 +664,7 @@
             }
 
             .logo {
-                font-size: 1.5rem;
+                font-size: 1rem;
             }
 
             .hero {
@@ -698,7 +699,7 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">OroTV-DulceTv</div>
+            <div class="logo">MiauTv-OroTv-DulceTv</div>
             <ul class="nav-links">
                 <li><a href="#home" class="nav-link active">Acasă</a></li>
                 <li><a href="#packages" class="nav-link">Pachete</a></li>
@@ -719,7 +720,14 @@
         <section class="hero">
             <div class="hero-content">
                 <h1>Televiziunea Ta Premium</h1>
-                <p>Peste 500+ canale HD/4K. Acces nelimitat. Oriunde în lume. Oricând dorești.</p>
+                <p style="line-height: 2;">
+                    Cu noi ești<br>
+                    Întotdeauna acasă<br>
+                    Oriunde în lume.<br>
+                    Oriunde acasă<br>
+                    Oriunde România<br>
+                    Oricând dorești.
+                </p>
                 <div class="cta-buttons">
                     <a href="#packages" class="btn btn-primary nav-link">Vezi Pachetele</a>
                     <a href="#contact" class="btn btn-secondary nav-link">Testează Gratuit</a>
@@ -729,7 +737,7 @@
 
         <!-- Features Section -->
         <section class="features">
-            <h2 class="section-title">De ce OroTV-DulceTv?</h2>
+            <h2 class="section-title">De ce MiauTv-OroTv-DulceTv?</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <span class="feature-icon">📺</span>
@@ -773,7 +781,7 @@
                 <div class="packages-grid">
                     <div class="package-card">
                         <h3 class="package-name">BASIC</h3>
-                        <div class="package-price">€9.99<span>/lună</span></div>
+                        <div class="package-price">€12<span> / 1 lună</span></div>
                         <ul class="package-features">
                             <li>200+ canale HD</li>
                             <li>Arhivă 3 zile</li>
@@ -786,7 +794,7 @@
 
                     <div class="package-card featured">
                         <h3 class="package-name">STANDARD</h3>
-                        <div class="package-price">€14.99<span>/lună</span></div>
+                        <div class="package-price">€39<span> / 3 luni</span></div>
                         <ul class="package-features">
                             <li>400+ canale HD/4K</li>
                             <li>Arhivă 7 zile</li>
@@ -800,7 +808,7 @@
 
                     <div class="package-card">
                         <h3 class="package-name">PREMIUM</h3>
-                        <div class="package-price">€19.99<span>/lună</span></div>
+                        <div class="package-price">€72<span> / 6 luni</span></div>
                         <ul class="package-features">
                             <li>500+ canale HD/4K/8K</li>
                             <li>Arhivă 14 zile</li>
@@ -812,6 +820,15 @@
                         </ul>
                         <a href="#contact" class="btn btn-secondary nav-link">Comandă Acum</a>
                     </div>
+                </div>
+
+                <!-- Package specifications -->
+                <div style="margin-top: 3rem; background: rgba(26,31,58,0.6); border: 1px solid rgba(0,217,255,0.15); border-radius: 20px; padding: 2rem; text-align: center; color: #a0aec0; font-size: 1.05rem; line-height: 2;">
+                    <p style="color:#00d9ff; font-weight:700; font-size:1.2rem; margin-bottom:0.8rem;">ℹ️ Specificații prețuri</p>
+                    <p>Prețuri pentru <strong style="color:#fff;">1 TV</strong></p>
+                    <p>Al doilea TV — <strong style="color:#fff;">+5€</strong> în plus</p>
+                    <p>Al treilea TV — <strong style="color:#00d9ff;">GRATUIT 🎉</strong></p>
+                    <p style="margin-top:0.8rem; font-size:0.95rem; opacity:0.75;">Toate TV-urile conectate la același internet.</p>
                 </div>
             </div>
         </section>
@@ -828,28 +845,28 @@
                         <span class="contact-item-icon">📧</span>
                         <div>
                             <strong>Email</strong><br>
-                            contact@placeholder.ro
+                            <a href="mailto:miau.oro.dulce@gmail.com" style="color:#a0aec0;">miau.oro.dulce@gmail.com</a>
                         </div>
                     </div>
                     <div class="contact-item">
                         <span class="contact-item-icon">📞</span>
                         <div>
                             <strong>Telefon</strong><br>
-                            +40 123 456 789
+                            00373 76885149
                         </div>
                     </div>
                     <div class="contact-item">
-                        <span class="contact-item-icon">💬</span>
+                        <span class="contact-item-icon">🕕</span>
                         <div>
-                            <strong>Program</strong><br>
-                            Luni - Duminică: 24/7
+                            <strong>Disponibilitate</strong><br>
+                            De preferat între orele 18–22
                         </div>
                     </div>
                     <div class="contact-item">
-                        <span class="contact-item-icon">📍</span>
+                        <span class="contact-item-icon">📘</span>
                         <div>
-                            <strong>Adresă</strong><br>
-                            Str. Exemplu Nr. 123, București, România
+                            <strong>Facebook</strong><br>
+                            <a href="https://www.facebook.com/share/g/1BxxfLGJDj/" target="_blank" style="color:#a0aec0;">Grupul nostru pe Facebook</a>
                         </div>
                     </div>
                 </div>
@@ -923,7 +940,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="logo">OroTV-DulceTv</div>
+            <div class="logo">MiauTv-OroTv-DulceTv</div>
             <div class="footer-links">
                 <a href="#home" class="nav-link">Acasă</a>
                 <a href="#packages" class="nav-link">Pachete</a>
@@ -931,12 +948,12 @@
                 <a href="#faq" class="nav-link">FAQ</a>
             </div>
             <div class="copyright">
-                © 2025 OroTV-DulceTv. Toate drepturile rezervate.
+                © 2025 MiauTv-OroTv-DulceTv. Toate drepturile rezervate.
             </div>
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Navigation functionality
         const navLinks = document.querySelectorAll('.nav-link');
         const pageSections = document.querySelectorAll('.page-section');
@@ -1031,8 +1048,8 @@
 
         document.querySelectorAll('.feature-card, .package-card').forEach(card => {
             card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'all 0.6s ease';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(card);
         });
     </script>
